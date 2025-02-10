@@ -4,19 +4,18 @@ const params = new URLSearchParams(window.location.search);
 
 const documentName = params.get("nome");
 
+const textEditor = document.getElementById("editor-texto");
 const titleDocument = document.getElementById("titulo-documento");
 
 titleDocument.textContent = documentName || "No title document!";
 
 selectDocument(documentName);
 
-const textEditor = document.getElementById("editor-texto");
-
 textEditor.addEventListener("keyup", () => {
    emitTextEditor({
     text: textEditor.value,
-    documentName: documentName
-    });
+    documentName
+   });
 });
 
 function updateTextEditor(text) {

@@ -12,7 +12,7 @@ function emitTextEditor(data) {
     socket.emit("text_editor", data);
 }
 
-socket.on("text_document", (text) => {
+socket.on("text_editor_clients", (text) => {
     updateTextEditor(text);
 });
 
