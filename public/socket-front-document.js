@@ -1,4 +1,4 @@
-import { updateTextEditor } from "./document.js";
+import { alertAndRedirect, updateTextEditor } from "./document.js";
 
 const socket = io();
 
@@ -16,4 +16,12 @@ socket.on("text_editor_clients", (text) => {
     updateTextEditor(text);
 });
 
-export { emitTextEditor, selectDocument };
+function emitDeleteDocument(name) {
+    socket.emit("delete_document", name);
+}
+
+socket.on("delete_document_success", (name) => {
+    alertAndRedirect(name);
+})
+
+export { emitTextEditor, selectDocument, emitDeleteDocument };

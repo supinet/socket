@@ -22,4 +22,19 @@ function updateDocument(name, text) {
     return update;
 }
 
-export { findDocument, updateDocument, getDocuments };
+function addDocument(name) {
+    const result = documentsCollection.insertOne({
+        name,
+        text: "",
+    });
+    return result;
+}
+
+function deleteDocument(name) {
+    const result = documentsCollection.deleteOne({
+        name
+    });
+    return result;
+}
+
+export { findDocument, updateDocument, getDocuments, addDocument, deleteDocument };
